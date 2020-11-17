@@ -397,16 +397,9 @@ export class DemoMeetingApp implements AudioVideoObserver, PingPongObserver {
     setInterval(async () => {
       try {
         const url = DemoMeetingApp.BASE_URL + 'get_load_test_status';
-        console.error('11111 ', url);
         const response = await fetch(url, {method: 'GET'});
-        console.error('010101 ', response);
-        console.error('3333 ', response.body);
-        console.error('4444 ',response.body.toString());
         if (response.status === 200) {
           const loadTestStatusResponse = await response.json();
-          console.error('5555 ',loadTestStatusResponse);
-          console.error('6666 ',loadTestStatusResponse.LoadTestStatus);
-          console.error('7777 ',loadTestStatusResponse.LoadTestStatus === 'Abort');
           if (loadTestStatusResponse.LoadTestStatus === 'Abort') {
             const buttonMeetingEnd = document.getElementById('button-meeting-end');
             buttonMeetingEnd.click();
